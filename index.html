@@ -130,15 +130,18 @@
         return;
       }
 
-      // Loader animasi
-      resultDiv.innerHTML = '<div class="loader"></div>';
+      resultDiv.innerHTML = '<div class="loader"></div><p>Sedang memproses...</p>';
+
+      const apiUrl = `https://brat.siputzx.my.id/iphone-quoted?time=11%3A26&messageText=${encodeURIComponent(message)}&carrierName=INDOSAT%20OOREDOO&batteryPercentage=88&signalStrength=4&emojiStyle=apple`;
 
       setTimeout(() => {
         resultDiv.innerHTML = `
-          <p style="font-size:1.2rem;color:#ffcccc;text-shadow:0 0 10px #ff0000;">"${message}"</p>
-          <a href="#" class="download-btn">⬇️ Download</a>
+          <p>Hasil:</p>
+          <img src="https://iphone-quote-generator.vercel.app/${apiUrl}" alt="Generated Image">
+          <br>
+          <a class="download-btn" href="https://iphone-quote-generator.vercel.app/api/download?url=${encodeURIComponent(apiUrl)}">⬇️ Download</a>
         `;
-      }, 1500);
+      }, 800);
     }
   </script>
 </body>
